@@ -1,0 +1,33 @@
+.tabs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    float: right;
+    border-bottom: 2px solid white;
+  }
+  
+  .tabs > li {
+    padding: 0.5em 1em;
+    margin: 0 1em;
+  }
+  
+  .current {
+    background: rgb(28 25 23);
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    border-bottom: 0;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    position: relative;
+    top: 2px;
+  }
+  
+  .content {
+    padding: 0em 0em;
+  }
+
+  .tabs > li > a {
+    text-decoration: none;
+  }
