@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import { Tabs } from "./Navigation/Tabs.js";
-import styles from "./Navigation/Tabs.module.css";
 import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
@@ -11,9 +9,11 @@ import Projects from "./Projects/Projects";
 import BlogElement from "./BlogElement";
 import propTypes from "prop-types";
 
+import { Tabs } from '../components/Navigation/Tabs';
+
 export default function Home({ posts }) {
   return (
-    <div className={styles.Container}>
+    <div >
       <Head>
         <title>Byron`s Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
@@ -40,9 +40,6 @@ export default function Home({ posts }) {
     </div>
   );
 }
-Home.propTypes = {
-  posts: propTypes.array.isRequired,
-};
 
 //this gets the query and posts instead of getInitialProps and getStaticProps
 export async function getServerSideProps({ query }) {

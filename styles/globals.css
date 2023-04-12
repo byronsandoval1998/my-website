@@ -273,7 +273,3 @@ a {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
-
-.blink {
-  animation: blink 1s infinite;
-}

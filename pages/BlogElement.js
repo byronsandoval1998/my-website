@@ -12,7 +12,7 @@ function BlogElement({ posts }) {
         {posts.map(post => (
    
           <li key={post.slug}>
-            <Link className="grid py-8 h-8" href={`/blog/${post.slug}`}>
+            <Link className="grid py-8 h-8" href={`/blog/${post.slug}`} target="_blank" rel="noreferrer">
               <span className="font-thin font-sans text-amber-50 text-2xl cursor-pointer">{post.data.title}</span>
             </Link>
             <small className="text-gray-100">{post.data.createdAt}</small>
@@ -24,9 +24,6 @@ function BlogElement({ posts }) {
     </div>
   );
 }
-BlogElement.propTypes = {
-  posts: propTypes.array.isRequired,
-};
 
 
 export default BlogElement;

@@ -27,9 +27,6 @@ export default function BlogPost({ post }) {
       </div>
   );
 }
-BlogPost.propTypes = {
-  post: propTypes.object.isRequired,
-};
 
 export async function getStaticPaths() {
   const postsDirectory = path.join(process.cwd(), "posts");

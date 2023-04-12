@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./Tabs.module.css";
 
-import { slugify } from "../utils/slugify";
+import { slugify } from "../../utils/slugify";
+
 
 
 const Tabs = ({ children, initialTab = 'Start' }) => {
