@@ -1,11 +1,13 @@
-import Head from 'next/head';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import ReactMarkdown from 'react-markdown';
-import Link from 'next/link';
+import Head from "next/head";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import ReactMarkdown from "react-markdown";
+import Link from "next/link";
+import React from "react";
+import propTypes from "prop-types";
 
-export default function BlogPost({ post }) {
+export default function BlogPost({ post }) {  
   return (
     <div>
       <Head>
@@ -25,15 +27,18 @@ export default function BlogPost({ post }) {
       </div>
   );
 }
+BlogPost.propTypes = {
+  post: propTypes.object.isRequired,
+};
 
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), 'posts');
+  const postsDirectory = path.join(process.cwd(), "posts");
   const filenames = fs.readdirSync(postsDirectory);
 
   const slugs = filenames.map(filename => {
     return {
       params: {
-        slug: filename.replace('.md', ''),
+        slug: filename.replace(".md", ""),
       },
     };
   });
@@ -45,9 +50,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postsDirectory = path.join(process.cwd(), 'posts');
+  const postsDirectory = path.join(process.cwd(), "posts");
   const filePath = path.join(postsDirectory, `${params.slug}.md`);
-  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const fileContents = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContents);
 
   //Convert the date string to a Date object
