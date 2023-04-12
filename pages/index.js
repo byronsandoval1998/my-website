@@ -40,6 +40,9 @@ export default function Home({ posts }) {
     </div>
   );
 }
+Home.propTypes = {
+  posts: propTypes.array.isRequired,
+}
 
 //this gets the query and posts instead of getInitialProps and getStaticProps
 export async function getServerSideProps({ query }) {

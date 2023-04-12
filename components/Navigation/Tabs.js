@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import styles from "./Tabs.module.css";
 
 import { slugify } from "../../utils/slugify";
+import propTypes from "prop-types";
 
 
 
@@ -59,6 +60,10 @@ const Tabs = ({ children, initialTab = 'Start' }) => {
       })}
     </div>
   );
+};
+Tabs.propTypes = {
+  children: propTypes.node.isRequired,
+  initialTab: propTypes.any,
 };
 
 export { Tabs };

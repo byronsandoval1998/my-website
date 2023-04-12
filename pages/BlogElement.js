@@ -24,6 +24,9 @@ function BlogElement({ posts }) {
     </div>
   );
 }
+BlogElement.propTypes = {
+  posts: propTypes.array.isRequired,
+};
 
 
 export default BlogElement;
