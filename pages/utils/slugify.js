@@ -2,6 +2,8 @@
  * Turns a string into a slug
  * Reference: https://gist.github.com/codeguy/6684588
  */
+import React from "react";
+
 export function slugify(str) {
     str = str.replace(/^\s+|\s+$/g, ""); // trim
     str = str.toLowerCase();
