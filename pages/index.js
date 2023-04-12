@@ -9,12 +9,13 @@ import About from "./About";
 import Start from "./Start";
 import Projects from "./Projects/Projects";
 import BlogElement from "./BlogElement";
+import propTypes from "prop-types";
 
-export default function Home({ query, posts }) {
+export default function Home({ posts }) {
   return (
     <div className={styles.Container}>
       <Head>
-        <title>Byron's Portfolio</title>
+        <title>Byron`s Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -39,6 +40,9 @@ export default function Home({ query, posts }) {
     </div>
   );
 }
+Home.propTypes = {
+  posts: propTypes.array.isRequired,
+};
 
 //this gets the query and posts instead of getInitialProps and getStaticProps
 export async function getServerSideProps({ query }) {
@@ -62,7 +66,6 @@ export async function getServerSideProps({ query }) {
 
   return {
     props: {
-      query,
       posts,
     },
   };

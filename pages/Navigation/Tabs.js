@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./Tabs.module.css";
 
 import { slugify } from "../utils/slugify";
+import React from "react";
 
 const Tabs = ({ children, initialTab = 'Start' }) => {
   const router = useRouter();
@@ -18,13 +19,13 @@ const Tabs = ({ children, initialTab = 'Start' }) => {
     if (tabFromUrl && children.some(child => slugify(child.props.label) === tabFromUrl)) {
       setActiveTab(tabFromUrl);
     }
-  }, [router.query.tab]);
+  }, [router.query.tab, children]);
 
   useEffect(() => {
     router.push(`${router.pathname}?tab=${slugify(activeTab)}`, undefined, {
       shallow: true,
     });
-  }, [activeTab]);
+  }, [activeTab, router]);
 
   return (
     <div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import propTypes from "prop-types";
 
 
 function BlogElement({ posts }) {
@@ -23,7 +24,9 @@ function BlogElement({ posts }) {
     </div>
   );
 }
-
+BlogElement.propTypes = {
+  posts: propTypes.array.isRequired,
+};
 
 
 export default BlogElement;
