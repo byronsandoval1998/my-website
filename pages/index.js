@@ -3,6 +3,8 @@ import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useMediaQuery } from '@react-hook/media-query';
 
 import About from "./About";
 import Start from "./Start";
@@ -10,49 +12,101 @@ import Projects from "./Projects/Projects";
 import propTypes from "prop-types";
 
 import { Tabs } from '../components/Navigation/Tabs';
+import dynamic from 'next/dynamic';
+import MobileMenu from "../components/Navigation/Dropdown";
+
 
 export default function Home({ posts }) {
+  const [activeTab, setActiveTab] = useState('Start');
+  const isMobile = useMediaQuery('(max-width: 600px)');
+
+  const handleTabClick = (label) => {
+    setActiveTab(label);
+  };
+
   return (
-    <div >
+    <>
       <Head>
         <title>Byron`s Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="bg-stone-900 px-10 min-h-screen">
-
-        <Tabs >
-          <div label="Start">
-            <Start />
-          </div>
-          <div label="About">
-            <About />
-          </div>
-          <div label="Projects">
-            <Projects />
-          </div>
-          <div label="Blog">
-          <div className="mx-auto m-0 max-w-2xl px-4 py-10">
-      <h1 className="text-3xl text-amber-50 font-sans">Posts</h1>
-      <ul className="mb-8 m-0 p-0">
-        {posts.map(post => (
-   
-          <li key={post.slug}>
-            <Link className="grid py-8 h-8" href={`/blog/${post.slug}`} target="_blank" rel="noreferrer">
-              <span className="font-thin font-sans text-amber-50 text-2xl cursor-pointer">{post.data.title}</span>
-            </Link>
-            <small className="text-gray-100">{post.data.createdAt}</small>
-            <p className="text-gray-300 text-md font-sans">{post.data.description}</p>
-          </li>
-
-        ))}
-      </ul>
-    </div>
-          </div>
-        </Tabs>
+        {isMobile ? (
+          
+          <MobileMenu>
+            <div label="Start">
+              <Start />
+            </div>
+            <div label="About">
+              <About />
+            </div>
+            <div label="Projects">
+              <Projects />
+            </div>
+            <div label="Blog">
+              <div className="mx-auto m-0 max-w-2xl px-4 py-10">
+                <h1 className="text-3xl text-amber-50 font-sans">Posts</h1>
+                <ul className="mb-8 m-0 p-0">
+                  {posts.map((post) => (
+                    <li key={post.slug}>
+                      <Link
+                        className="grid py-8 h-8"
+                        href={`/blog/${post.slug}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span className="font-thin font-sans text-amber-50 text-2xl cursor-pointer">
+                          {post.data.title}
+                        </span>
+                      </Link>
+                      <small className="text-gray-100">{post.data.createdAt}</small>
+                      <p className="text-gray-300 text-md font-sans">{post.data.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </MobileMenu>
         
+        ) : (
+          <Tabs activeTab={activeTab} onTabClick={handleTabClick}>
+            <div label="Start">
+              <Start />
+            </div>
+            <div label="About">
+              <About />
+            </div>
+            <div label="Projects">
+              <Projects />
+            </div>
+            <div label="Blog">
+              <div className="mx-auto m-0 max-w-2xl px-4 py-10">
+                <h1 className="text-3xl text-amber-50 font-sans">Posts</h1>
+                <ul className="mb-8 m-0 p-0">
+                  {posts.map((post) => (
+                    <li key={post.slug}>
+                      <Link
+                        className="grid py-8 h-8"
+                        href={`/blog/${post.slug}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span className="font-thin font-sans text-amber-50 text-2xl cursor-pointer">
+                          {post.data.title}
+                        </span>
+                      </Link>
+                      <small className="text-gray-100">{post.data.createdAt}</small>
+                      <p className="text-gray-300 text-md font-sans">{post.data.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Tabs>
+        )}
       </main>
-    </div>
+    </>
   );
 }
 Home.propTypes = {

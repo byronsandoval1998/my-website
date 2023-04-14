@@ -8,7 +8,7 @@ const Start = () => {
         
         <section className="min-h-screen">
 
-          <div className="text-center p-10 py-10">
+          <div className="text-center py-10 sm:inline">
             <h2 className="text-5xl py-2 text-teal-600 font-medium font-Slovic_S">Byron Sandoval</h2>
             <h3 className="text-amber-50 text-2xl py-5">Developer & Writer</h3>
             <p className="text-gray-300 text-md py-5 leading-8">

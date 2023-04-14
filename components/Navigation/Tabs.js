@@ -6,6 +6,15 @@ import styles from "./Tabs.module.css";
 import { slugify } from "../../utils/slugify";
 import propTypes from "prop-types";
 
+const TabContent = React.memo(({ children }) => {
+  return (
+    <div className={styles.content}>
+      {children}
+    </div>
+  );
+});
+
+TabContent.displayName = 'TabContent';
 
 
 const Tabs = ({ children, initialTab = 'Start' }) => {
@@ -15,6 +24,7 @@ const Tabs = ({ children, initialTab = 'Start' }) => {
   const handleClick = (e, newActiveTab) => {
     e.preventDefault();
     setActiveTab(slugify(newActiveTab));
+
   };
 
   useEffect(() => {
@@ -31,18 +41,18 @@ const Tabs = ({ children, initialTab = 'Start' }) => {
   }, [activeTab, router]);
 
   return (
-    <div>
-      <nav className="flex justify-between py-10 mb12">
-        <h1 className="text-xl text-amber-50 font-Slovic_H">develeopedbybyron<em className="animate-pulse">_</em></h1>
+    <>
+      <nav className="flex justify-between py-10 mb12 sm:flex-auto">
+        <h1 className="text-xl text-amber-50 font-Slovic_H ">develeopedbybyron<em className="animate-pulse">_</em></h1>
         <ul className={styles.tabs}>
           {children.map((tab) => {
             const label = tab.props.label;
             return (
               <li
-                className={slugify(label) == activeTab ? styles.current : ""}
+                className={slugify(label) == activeTab ? styles.current : "hover:opacity-80"}
                 key={label}
               >
-                <a href="#" onClick={(e) => handleClick(e, label)} className="text-amber-50 hover:opacity-80">
+                <a href="#" onClick={(e) => handleClick(e, label)} className="text-amber-50">
                   {label}
                 </a>
               </li>
@@ -51,14 +61,15 @@ const Tabs = ({ children, initialTab = 'Start' }) => {
         </ul>
       </nav>
       {children.map((one) => {
-        if (slugify(one.props.label) == activeTab)
+        if (slugify(one.props.label) === activeTab) {
           return (
-            <div key={one.props.label} className={styles.content}>
+            <TabContent key={one.props.label}>
               {one.props.children}
-            </div>
+            </TabContent>
           );
+        }
       })}
-    </div>
+    </>
   );
 };
 Tabs.propTypes = {

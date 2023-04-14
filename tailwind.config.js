@@ -12,6 +12,9 @@ module.exports = {
       }
       
     },
+    screens: {
+      'sm': '375px',
+    },
   },
   plugins: [],
 }
