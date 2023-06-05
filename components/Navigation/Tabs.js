@@ -43,7 +43,7 @@ const Tabs = ({ children, initialTab = 'Start' }) => {
   return (
     <>
       <nav className="flex justify-between py-10 mb12 sm:flex-auto">
-        <h1 className="text-xl text-amber-50 font-Slovic_H ">develeopedbybyron<em className="animate-pulse">_</em></h1>
+        <h1 className="text-3xl text-amber-50 font-Slovic_H ">develeopedbybyron<em className="animate-pulse">_</em></h1>
         <ul className={styles.tabs}>
           {children.map((tab) => {
             const label = tab.props.label;
