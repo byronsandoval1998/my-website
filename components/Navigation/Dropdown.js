@@ -1,5 +1,6 @@
 import { useState } from "react";
 import propTypes from "prop-types";
+import Head from 'next/head';
 
 function MobileMenu({ children }) {
   const [activeTab, setActiveTab] = useState(children[0].props.label);
@@ -51,6 +52,7 @@ function MobileMenu({ children }) {
           </ul>
         </div>
       )}
+      
       {children.map((one) => {
         if (one.props.label === activeTab)
           return (
@@ -59,7 +61,7 @@ function MobileMenu({ children }) {
             </div>
           );
       })}
-    </>
+      </>
   );
 }
 MobileMenu.propTypes = {

@@ -45,7 +45,7 @@ export async function getStaticPaths() {
 
   return {
     paths: slugs,
-    fallback: false,
+    fallback: true,
   };
 }
 
