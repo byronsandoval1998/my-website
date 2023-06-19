@@ -11,7 +11,7 @@ export default function BlogPost({ post }) {
   return (
     <div>
       <Head>
-        <title>{post.title}</title>
+        <h1>{post.title}</h1>
       </Head>
       <article className="px-10 py-5 min-h-screen">
         <Link href="/?tab=blog" className="inline-flex">
