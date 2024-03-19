@@ -34,8 +34,10 @@ export default function BlogPost({ post }) {
             />
           </svg>
         </Link>
-        <h1 className="text-amber-50 text-3xl py-5">{post.title}</h1>
-        <ReactMarkdown className="text-amber-50">{post.content}</ReactMarkdown>
+        <div className="mx-96">
+        <h1 className="text-amber-50 text-5xl py-5 text-center">{post.title}</h1>
+        <ReactMarkdown className="text-amber-50 py-8 text-xl">{post.content}</ReactMarkdown>
+        </div>
       </article>
     </div>
   );

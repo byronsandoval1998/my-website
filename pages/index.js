@@ -17,7 +17,7 @@ import dynamic from 'next/dynamic';
 import MobileMenu from "../components/Navigation/Dropdown";
 
 
-export default function Home({ posts }) {
+export default function Home() {
   const [activeTab, setActiveTab] = useState('Start');
   const isMobile = useMediaQuery('(max-width: 600px)');
 
@@ -33,82 +33,7 @@ export default function Home({ posts }) {
       </Head>
 
       <main className="bg-stone-900 px-10 min-h-screen">
-        {isMobile ? (
-          
-          <MobileMenu>
-            <div label="Start">
-              <Start />
-            </div>
-            <div label="Services">
-              <Projects />
-            </div>
-            <div label="About">
-              <About />
-            </div>
-            <div label="Blog">
-              <div className="mx-auto m-0 max-w-2xl px-4 py-10">
-                <h1 className="text-3xl text-amber-50 font-sans">Posts</h1>
-                <ul className="mb-8 m-0 p-0">
-                  {posts.map((post) => (
-                    <li key={post.slug}>
-                      <Link
-                        className="grid py-8 h-8"
-                        href={`/blog/${post.slug}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <span className="font-thin font-sans text-amber-50 text-2xl cursor-pointer">
-                          {post.data.title}
-                        </span>
-                      </Link>
-                      <small className="text-gray-100">{post.data.createdAt}</small>
-                      <p className="text-gray-300 text-md font-sans">{post.data.description}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </MobileMenu>
-        
-        ) : (
-          <Tabs activeTab={activeTab} onTabClick={handleTabClick}>
-            <div label="Start">
-              <Start />
-            </div>
-            <div label="Services">
-              <Projects />
-            </div>
-            <div label="About">
-              <About />
-            </div>
-            <div label="Portfolio">
-              <div className="mx-auto m-0 max-w-2xl px-4 py-10">
-                <h1 className="text-3xl text-amber-50 font-sans">Blog Posts</h1>
-                <ul className="mb-8 m-0 p-0">
-                  {posts.map((post) => (
-                    <li key={post.slug}>
-                      <Link
-                        className="grid py-8 h-8"
-                        href={`/blog/${post.slug}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <span className="font-thin font-sans text-amber-50 text-2xl cursor-pointer">
-                          {post.data.title}
-                        </span>
-                      </Link>
-                      <small className="text-gray-100">{post.data.createdAt}</small>
-                      <p className="text-gray-300 text-md font-sans">{post.data.description}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div label="Hire Me">
-              <Hire />
-            </div>
-          </Tabs>
-        )}
+        <a className="text-7xl text-gray-200">Website under construction...</a>
       </main>
     </>
   );
